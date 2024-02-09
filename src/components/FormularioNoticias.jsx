@@ -1,11 +1,12 @@
 import { useState,useEffect } from "react";
 import { Container, Form } from "react-bootstrap";
+import ListaNoticias from "./ListaNoticias";
 
 const FormularioNoticias = () => {
-  const [categoria, setCategoria] = useState();
+  const [categoria, setCategoria] = useState("general");
   const [noticias, setNoticias] = useState([]);
 
-  const url = `https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=de7790c8316344f1aad516564e45553f`;
+  const url = `https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=de7790c8316344f1aad516564e45553f`
 
   useEffect(() => {
     const consultarAPI = async () => {
@@ -18,14 +19,14 @@ const FormularioNoticias = () => {
   }, [categoria]);
 
   const Categorias = [
-    { value: "portada", label: "Portada" },
-    { value: "ultimo momento", label: "Ultimo momento" },
-    { value: "deportes", label: "Deportes" },
-    { value: "politica", label: "Politica" },
-    { value: "seguridad", label: "Seguridad" },
-    { value: "economía", label: "Economía" },
-    { value: "cultura", label: "Cultura" },
-  ];
+    { value: 'general', label: 'General'},
+    { value: 'business', label: 'Negocios'},
+    { value: 'entertainment', label: 'Entretenimiento'},
+    { value: 'health', label: 'Salud'},
+    { value: 'science', label: 'Ciencia'},
+    { value: 'sports', label: 'Deportes'},
+    { value: 'technology', label: 'Tecnología'},
+]
 
   return (
     <>
@@ -45,6 +46,7 @@ const FormularioNoticias = () => {
             ))}
           </Form.Select>
         </Form.Group>
+        <ListaNoticias noticias={noticias}></ListaNoticias>
       </Container>
     </>
   );
