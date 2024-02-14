@@ -1,14 +1,14 @@
 import { Card } from 'react-bootstrap';
 
 const Noticias = ({ noticia }) => {
-  const { urlToImage, url, title, description, source } = noticia;
+  const { image_url, title, description, creator } = noticia;
 
   return (
     <Card className="w-100 h-100 d-flex flex-column">
-      {urlToImage && (
+      {image_url && (
         <Card.Img
           variant="top"
-          src={urlToImage}
+          src={image_url}
           alt={`Imagen de la noticia ${title}`}
           className="img-fluid"
         />
@@ -16,14 +16,13 @@ const Noticias = ({ noticia }) => {
 
       <Card.Body className="d-flex flex-column">
         <Card.Title className="text-warning py-2">{title}</Card.Title>
-        <Card.Subtitle className="pb-2">{source.name}</Card.Subtitle>
+        <Card.Subtitle className="pb-2">{creator}</Card.Subtitle>
         <Card.Text>{description}</Card.Text>
       </Card.Body>
 
       <Card.Footer className="mt-auto">
         <a
           className="btn btn-outline-warning w-100 text-uppercase fw-bold"
-          href={url}
           target="_blank"
           rel="noopener noreferrer"
         >

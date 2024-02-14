@@ -3,17 +3,17 @@ import { Container, Form } from "react-bootstrap";
 import ListaNoticias from "./ListaNoticias";
 
 const FormularioNoticias = () => {
-  const [categoria, setCategoria] = useState("general");
+  const [categoria, setCategoria] = useState("business");
   const [noticias, setNoticias] = useState([]);
 
-  const url = `https://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=de7790c8316344f1aad516564e45553f`
+  const url = `https://newsdata.io/api/1/news?apikey=pub_3792983f382da421d03c01863e7b50f5b0c3e&&country=us&category=${categoria}`
 
   useEffect(() => {
     const consultarAPI = async () => {
       const respuesta = await fetch(url);
       const data = await respuesta.json();
-
-      setNoticias(data.articles);
+      console.log(data);
+      setNoticias(data.results);
     };
     consultarAPI();
   }, [categoria]);

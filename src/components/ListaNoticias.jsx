@@ -6,8 +6,8 @@ const ListaNoticias = ({ noticias }) => {
       <h2 className="text-center fw-bold pt-5">Últimas Noticias</h2>
       <div className="container my-5">
         <div className="row justify-content-center">
-          {noticias && Array.isArray(noticias) && noticias.length > 0 ? (
-            noticias.map((noticia, index) => (
+          {noticias && Array.isArray(noticias) && noticias?.length > 0 ? (
+            noticias?.map((noticia, index) => (
               <div key={index} className="col-12 col-md-6 col-lg-4 mb-3">
                 <Noticias noticia={noticia} />
               </div>
